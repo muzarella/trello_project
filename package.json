@@ -1,0 +1,29 @@
+{
+  "name": "trello",
+  "version": "1.0.0",
+  "description": "trello app ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:sass": "node-sass sass/main.scss  assets/css/style.css -w",
+    "devServer": "live-server",
+    "start": "npm-run-all --parallel devServer watch:sass",
+    "compile:sass": "node-sass sass/main.scss  assets/css/style.comp.css",
+    "concat:css": "concat -o  assets/css/style.concat.css  assets/css/icon-font.css  assets/css/style.comp.css ",
+    "prefixer:css": "postcss  assets/css/style.comp.css  --use autoprefixer  --map=false --output  assets/css/style.prefix.css",
+    "prefix:css": "postcss [assets/css/style.comp.css]  [-o  assets/css/style.prefix.css] ",
+    "compress:css": "node-sass assets/css/style.prefix.css  assets/css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass  prefixer:css compress:css "
+  },
+  "author": "tunde",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.0.1",
+    "compress": "^0.99.0",
+    "concat": "^1.0.3",
+    "node-sass": "^4.14.1",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.1.0",
+    "postcss-cli": "^8.1.0"
+  }
+}
